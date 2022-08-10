@@ -1,3 +1,5 @@
+package com.flatiron.spring.FlatironSpring.controller;
+
 import com.flatiron.spring.FlatironSpring.controller.HelloController;
 import org.junit.jupiter.api.Test;
 
