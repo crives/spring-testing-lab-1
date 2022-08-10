@@ -1,46 +1,27 @@
 package com.flatiron.spring.FlatironSpring.controller;
 
 import com.flatiron.spring.FlatironSpring.controller.HelloController;
+import com.flatiron.spring.FlatironSpring.service.JokeService;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 class HelloControllerUnitTest {
 
     @Test
-    void hello() {
-        HelloController helloController = new HelloController();
+    void shouldReturnGreeting() {
+        JokeService jokeService = Mockito.mock(JokeService.class);
+        String dadJoke = "Did you hear about the new restaurant on the moon? The food is great, " +
+                "but there’s just no atmosphere.";
+        HelloController helloController = new HelloController(jokeService);
+        when(jokeService.getDadJoke()).thenReturn(dadJoke);
         String name = "Jamie";
-        assertEquals("Hello " + name, helloController.hello(name));
+        String expected = "Hello " + name + "<br/>" +
+                "Dad joke of the moment: " +
+                dadJoke;
+        String actual = helloController.hello(name);
+        assertEquals(expected, actual);
     }
-
-    @Test
-    void reverseUppercase() {
-        HelloController helloController = new HelloController();
-        String str = "Jay";
-        assertEquals("yaJ", helloController.reverse(str));
-    }
-
-    @Test
-    void reverseLowercase() {
-        HelloController helloController = new HelloController();
-        String str = "jay";
-        assertEquals("yaj", helloController.reverse(str));
-    }
-
-    @Test
-    void reverseSpace() {
-        HelloController helloController = new HelloController();
-        String str = "jay ";
-        assertEquals(" yaj", helloController.reverse(str));
-    }
-
-    @Test
-    void reverseNumbers() {
-        HelloController helloController = new HelloController();
-        String str = "ja2y";
-        assertEquals("y2aj", helloController.reverse(str));
-    }
-
-
 }
