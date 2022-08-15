@@ -2,6 +2,7 @@ package com.flatiron.spring.FlatironSpring.service;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,8 +10,8 @@ import org.springframework.web.client.RestTemplate;
 public class BitcoinService {
 
     public String getBitcoinCost() {
-        String apiURL = "https://api.coincap.io/v2/assets/bitcoin";
         RestTemplate restTemplate = new RestTemplate();
+        String apiURL = "https://api.coincap.io/v2/assets/bitcoin";
         String result = restTemplate.getForObject(apiURL, Data.class).getData().getPriceUsd();
 
         return result;

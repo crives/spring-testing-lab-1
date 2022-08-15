@@ -11,7 +11,6 @@ public class BitcoinControllerUnitTest {
 
     @Test
     void shouldReturnBitcoinPrice() {
-
         BitcoinService bitcoinService = Mockito.mock(BitcoinService.class);
         String priceUsd = "23659.2377744323057067";
 

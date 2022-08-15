@@ -1,6 +1,5 @@
 package com.flatiron.spring.FlatironSpring.controller;
 
-import com.flatiron.spring.FlatironSpring.controller.HelloController;
 import com.flatiron.spring.FlatironSpring.service.JokeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
