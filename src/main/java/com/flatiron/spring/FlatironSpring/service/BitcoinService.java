@@ -9,9 +9,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class BitcoinService {
 
-    public String getBitcoinCost() {
+    public String getBitcoinCost(String currency) {
         RestTemplate restTemplate = new RestTemplate();
-        String apiURL = "https://api.coincap.io/v2/assets/bitcoin";
+        String apiURL = "https://api.coincap.io/v2/assets/" + currency;
         String result = restTemplate.getForObject(apiURL, Data.class).getData().getPriceUsd();
 
         return result;

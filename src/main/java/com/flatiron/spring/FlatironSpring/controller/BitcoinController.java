@@ -14,6 +14,6 @@ public class BitcoinController {
 
     @GetMapping("/bitcoin")
     public String getBitcoinCost() {
-        return bitcoinService.getBitcoinCost();
+        return bitcoinService.getBitcoinCost("bitcoin");
     }
 }
