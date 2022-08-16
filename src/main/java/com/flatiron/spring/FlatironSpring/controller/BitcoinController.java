@@ -12,7 +12,7 @@ public class BitcoinController {
     @Autowired
     private BitcoinService bitcoinService;
 
-    @GetMapping("/bitcoin")
+    @GetMapping("/api/bitcoin")
     public String getBitcoinCost() {
         return bitcoinService.getBitcoinCost("bitcoin");
     }

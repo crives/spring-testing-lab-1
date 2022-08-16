@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -19,19 +18,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/status")
-                .hasAuthority("admin")
-                .antMatchers("/hello")
-                .hasAuthority("admin")
-                .antMatchers("/bitcoin")
+                .antMatchers("/api/status")
                 .hasAuthority("admin");
+
+        http.authorizeRequests()
+                .antMatchers("/api/**")
+                .authenticated()
+                .and()
+                .oauth2Login() // change httpBasic() to oauth2Login() for API resources
+                .and()
+                .logout();
 
         http.authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
-
+                .oauth2Login();
     }
 
     @Bean

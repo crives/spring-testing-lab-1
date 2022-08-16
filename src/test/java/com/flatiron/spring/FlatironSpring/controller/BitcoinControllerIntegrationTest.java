@@ -31,7 +31,7 @@ public class BitcoinControllerIntegrationTest {
     void shouldReturnBitcoinCost() throws Exception {
         when(bitcoinService.getBitcoinCost("bitcoin")).thenReturn("1");
         // Test controller with mock bitcoinService to only test the controller
-        mockMvc.perform(get("/bitcoin"))
+        mockMvc.perform(get("/api/bitcoin"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("1")));

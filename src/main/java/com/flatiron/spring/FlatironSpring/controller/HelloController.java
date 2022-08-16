@@ -14,7 +14,7 @@ public class HelloController {
         this.jokeService = jokeService;
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/api/hello")
     public String hello(@RequestParam(name = "targetName", defaultValue = "Stephanie") String name) {
         String greeting = "Hello " + name;
         greeting += "<br/>";
@@ -22,7 +22,7 @@ public class HelloController {
         return greeting;
     }
 
-    @GetMapping("/status")
+    @GetMapping("/api/status")
     public String status() {
         return "Congratulations - you must be an admin since you can see the application's status information";
     }

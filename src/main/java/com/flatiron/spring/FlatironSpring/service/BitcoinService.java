@@ -11,7 +11,7 @@ public class BitcoinService {
 
     public String getBitcoinCost(String currency) {
         RestTemplate restTemplate = new RestTemplate();
-        String apiURL = "https://api.coincap.io/v2/assets/" + currency;
+        String apiURL = "https://api.coincap.io/v2/assets/api/" + currency;
         String result = restTemplate.getForObject(apiURL, Data.class).getData().getPriceUsd();
 
         return result;
