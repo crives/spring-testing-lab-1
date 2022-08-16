@@ -1,18 +1,19 @@
 package com.flatiron.spring.FlatironSpring.service;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 @Service
 public class BitcoinService {
 
     public String getBitcoinCost(String currency) {
+        log.trace("Beginning of getBitcoinCost() method");
         RestTemplate restTemplate = new RestTemplate();
-        String apiURL = "https://api.coincap.io/v2/assets/api/" + currency;
+        String apiURL = "https://api.coincap.io/v2/assets/" + currency;
         String result = restTemplate.getForObject(apiURL, Data.class).getData().getPriceUsd();
+        log.trace("End of getBitcoinCost() method");
 
         return result;
     }
